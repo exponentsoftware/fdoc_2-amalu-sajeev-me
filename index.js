@@ -83,8 +83,20 @@ function createArrayOfArrays(arr) {
     }
  ];
  
- console.log(scoresGreaterThan85(users));
+//  console.log(scoresGreaterThan85(users));
+// console.log(addUser(users, { name: "amalu", scores: 17, skills: 'coding', age: 23 }));
 
 function scoresGreaterThan85(data) {
-    return data.filter(({ scores }) => scores > 85)
+  return data.filter(({ scores }) => scores > 85);
 }
+
+function addUser(data, { name, scores, skills, age }) {
+  const username = name;
+  const existingUser = data.some(({ name }) => name === username);
+  if (existingUser) throw "user already exists";
+  const user = { name, scores, skills, age };
+  data.push(user);
+  return user;
+}
+
+// #############################################################################
