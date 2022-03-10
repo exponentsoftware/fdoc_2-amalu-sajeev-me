@@ -85,8 +85,8 @@ function createArrayOfArrays(arr) {
  
 //  console.log(scoresGreaterThan85(users));
 // console.log(addUser(users, { name: "amalu", scores: 17, skills: ['coding'], age: 23 }));
-console.log(addUserSkill(users, 'Thomas', 'jump'));
-
+// console.log(addUserSkill(users, 'Thomas', 'jump'));
+// console.log(editUser(users, "Thomas", { name: "amalu sajeev", scores: 75, skills: null, age: 23 }));
 
 
 function scoresGreaterThan85(data) {
@@ -105,15 +105,23 @@ function addUser(data, { name, scores, skills, age }) {
 // #############################################################################
 
 function addUserSkill(data, user, skill) {
-
-    const existingUser = data.some(({ name }, index, arr) => {
-        const result = name === user;
-        if (result) data[index].skills.push(skill);
-        return result;
-    });
-    if (!existingUser) return false;
-    return true;
+  const existingUser = data.some(({ name }, index, arr) => {
+    const result = name === user;
+    if (result) data[index].skills.push(skill);
+    return result;
+  });
+  if (!existingUser) return false;
+  return true;
 }
 
-
 //  #############################################################################
+
+function editUser(data, username, user) {
+  const existingUser = data.some(({ name }, index, arr) => {
+    const result = name === username;
+    if (result) data[index] = user;
+    return result;
+  });
+  if (!existingUser) return false;
+  return true;
+}
